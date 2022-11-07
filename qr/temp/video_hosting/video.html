@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{{ video.title }}
+<p>{{ video.anons }} </p>
+<img class="single-video" src="{{ video.image.url }}" alt="">
+<h4><a href="{% url 'video' video.id %}"></a></h4>
+<div class="col-md-12 col-sm-12">
+          <video
+              id="my-video"
+              class="video-js"
+              controls
+              preload="auto"
+              width="1000"
+              height="800"
+              data-setup="{}"
+          >
+            <source src="{% url 'stream' video.id %}" type="video/mp4"/>
+            <source src="{% url 'stream' video.id %}" type="video/webm"/>
+          </video>
+<p>{{ video.create_at }} </p>
+{% endblock content %}
